@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export const useAsync = (url) => {
     const [datos, setDatos] = useState([]);
+    const [cargando, setCargando] = useState(true)
 
     const getData = async () => {
         try {
@@ -12,13 +13,15 @@ export const useAsync = (url) => {
 
             const {amiibo} = await response.json();
             setDatos(amiibo);
+            setCargando(false);
+
         } catch (error) {
             console.error("Error fetch: ", error)
         }
     }
 
     const limitData = (number) => {
-        const limiteData = datos.splice(0, number);
+        const limiteData = datos.slice(0, number);
         return limiteData
     }
 
@@ -28,6 +31,7 @@ export const useAsync = (url) => {
 
     return {
         datos,
+        cargando,
         limitData
     };
 

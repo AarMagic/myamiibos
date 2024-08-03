@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -11,13 +11,13 @@ import { Card } from './Card';
 export const Slider = () => {
   // const amiibos = useContext("AmiibosContext")
   const [amiibosState, setAmiibosState] = useState([]);
-  const { limitData } = useAsync("https://amiiboapi.com/api/amiibo/?type=figure")
+  const { limitData, cargando } = useAsync("https://amiiboapi.com/api/amiibo/?type=figure")
 
   useEffect(() => {
     const limitedData = limitData(10);
     setAmiibosState(limitedData);
 
-  }, [])
+  }, [limitData])
 
   return (
     <Swiper
@@ -53,14 +53,18 @@ export const Slider = () => {
         },
       }}
       pagination={{
-        clickable: false,
+        clickable: true,
       }}
       modules={[Pagination, Navigation, Autoplay]}
     >
       {
-        amiibosState && amiibosState.map((element, index) => {
-          return <SwiperSlide key={index}><Card element={element} /></SwiperSlide>
-        })
+        cargando
+          ?
+          "Cargando"
+          :
+          amiibosState.map((element, index) => {
+            return <SwiperSlide key={index}><Card element={element} /></SwiperSlide>
+          })
       }
     </Swiper>
   )
