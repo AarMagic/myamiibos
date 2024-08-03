@@ -1,13 +1,102 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --font-title: "Roboto Condensed", sans-serif;
+  --font-text: "Roboto", sans-serif;
+  --rojo-vivo: #FF4C4C;
+  --azul-claro: #4C9AFF;
+  --azul-medio: #45698f;
+  --azul: #66B2FF;
+  --blanco: #fff;
+  --negro: #000;
+  --gris-claro: #F2F2F2;
+  --gris-oscuro: #555;
+  --amarillo: #FFD700;
+  --verde-claro: #4CFF4C;
+  --verde-claro-2: #66FF66;
+  --tag1: #FF99C8;
+  --tag2: #FCF6BD;
+  --tag3: #D0F4DE;
+  --tag4: #A9DEF9;
+  --tag5: #E4C1F9;
+  --radius: 13px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+  font-weight: 900;
+}
+
+h1 {
+  color: var(--rojo-vivo);
+  font-size: 64px;
+}
+
+h2 {
+  color: var(--azul-claro);
+  font-size: 48px;
+}
+
+h3 {
+  color: var(--negro);
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--azul-medio);
+  font-weight: 600;
+}
+
+a:hover,
+.active {
+  color: var(--azul);
+}
+
+p .resaltado {
+  color: var(--amarillo);
+}
+
+
+.header-principal {
+  background-color: var(--gris-claro);
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.nav-principal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-principal ul{
+  display: flex;
+  list-style: none;
+  gap: 2em;
+}
+
+
+.content{
+  width: 100%;
+  padding: 1em;
+}
+
+
+.inicio h2{
+  margin-top: .8em;
+  margin-bottom: .5em;
 }

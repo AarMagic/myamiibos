@@ -1,0 +1,28 @@
+.tags{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tags ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.tags li {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: .5em;
+}
+
+.tag{
+    width: 10em;
+    padding: 1em;
+    border-radius: var(--radius);
+    text-align: center;
+    background-color: var(--tag1);
+    cursor: pointer;
+}

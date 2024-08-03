@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { AmiibosContext } from "./context/AmiibosContext";
+import { PrincipalRouting } from "./routes/PrincipalRouting";
+import {useAsync} from './hooks/useAsync';
 function App() {
+
+  const {datos} = useAsync("https://amiiboapi.com/api/amiibo/?type=figure");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AmiibosContext.Provider value={datos}>
+        <PrincipalRouting />
+      </AmiibosContext.Provider>
     </div>
   );
 }

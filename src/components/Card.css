@@ -1,0 +1,30 @@
+.card {
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-radius: var(--radius);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    text-shadow: -2px -2px 5px var(--gris-oscuro);
+    margin: 2em 0;
+    height: 20em;
+}
+
+.card header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-image{
+    margin-top: 1em;
+    height: 13em;
+    object-fit: cover;
+    mask-image: linear-gradient(
+        var(--blanco),
+        transparent 90%
+        
+    );
+}
