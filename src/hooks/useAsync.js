@@ -11,8 +11,13 @@ export const useAsync = (url) => {
                 throw new Error(response.status)
             }
 
-            const {amiibo} = await response.json();
-            setDatos(amiibo);
+            const { amiibo } = await response.json();
+            const reduceArray = amiibo.filter((item, index, self) =>
+                index === self.findIndex((t) => (
+                    t.name === item.name
+                ))
+            );
+            setDatos(reduceArray);
             setCargando(false);
 
         } catch (error) {

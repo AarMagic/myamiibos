@@ -1,27 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tag } from './Tag'
 import './Tags.css'
+import { useAsync } from '../hooks/useAsync'
 
 
-export const ShowTags = (tags = []) => {
+export const ShowTags = ({ url }) => {
+    const {datos, cargando, limitData } = useAsync(url)
+    const [tags, setTags] = useState([])
+    useEffect(() =>{
+        if (!cargando && datos.length > 0 && tags.length === 0) {
+            const limitedData = limitData(20)
+            setTags(limitedData)
+        }
+    }, [cargando, datos, tags, limitData])
     return (
         <div className='tags'>
-            <ul>
-                {/* <li>
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                </li>
-                <li>
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                </li> */}
-            </ul>
+            {
+                cargando ?
+                <p>Cargando...</p>
+                :
+                tags.map((tag, index) => {
+                    return <Tag key={index} tagname={tag.name} />
+                })
+            }
         </div>
     )
 }
