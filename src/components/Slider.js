@@ -11,13 +11,15 @@ import { Card } from './Card';
 export const Slider = () => {
   // const amiibos = useContext("AmiibosContext")
   const [amiibosState, setAmiibosState] = useState([]);
-  const { limitData, cargando } = useAsync("https://amiiboapi.com/api/amiibo/?type=figure")
+  const { datos, limitData, cargando } = useAsync("https://amiiboapi.com/api/amiibo/?type=figure")
 
   useEffect(() => {
-    const limitedData = limitData(10);
-    setAmiibosState(limitedData);
+    if (!cargando && datos.length > 0 && amiibosState.length === 0) {
+      const limitedData = limitData(10);
+      setAmiibosState(limitedData);
+    }
 
-  }, [limitData])
+  }, [cargando, limitData, datos, amiibosState])
 
   return (
     <Swiper
@@ -40,16 +42,16 @@ export const Slider = () => {
           slidesPerView: 2,
           spaceBetween: 40
         },
-        880: {
+        940: {
           slidesPerView: 3,
-          spaceBetween: 200
+          spaceBetween: 80
         },
         1300: {
           slidesPerView: 4,
-          spaceBetween: 70
+          spaceBetween: 50
         },
-        1600: {
-          slidesPerView: 5,
+        1540: {
+          slidesPerView: 4,
         },
       }}
       pagination={{

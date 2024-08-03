@@ -7,7 +7,7 @@ export const ShowTags = (tags = []) => {
     return (
         <div className='tags'>
             <ul>
-                <li>
+                {/* <li>
                     <Tag />
                     <Tag />
                     <Tag />
@@ -20,7 +20,7 @@ export const ShowTags = (tags = []) => {
                     <Tag />
                     <Tag />
                     <Tag />
-                </li>
+                </li> */}
             </ul>
         </div>
     )
