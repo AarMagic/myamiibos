@@ -15,7 +15,7 @@ export const Header = () => {
                 </li>
                 <li>
                     <NavLink
-                    to="/amiibos/" 
+                    to="/amiibos" 
                     className={({isActive}) => isActive ? "active" : ""}
                     >Amiibos</NavLink>
                 </li>

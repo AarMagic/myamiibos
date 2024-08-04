@@ -2,17 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { Tag } from './Tag'
 import './Tags.css'
 import { useAsync } from '../hooks/useAsync'
+import { useArray } from '../hooks/useArray'
 
 
 export const ShowTags = ({ url }) => {
-    const {datos, cargando, limitData } = useAsync(url)
+    const {datos, cargando } = useAsync(url)
     const [tags, setTags] = useState([])
+    const {data, limitArray, setData}  = useArray()
+    useEffect(() => {
+        if (!cargando) {
+            setData(datos)
+        }
+    }, [cargando, datos, setData])
+
     useEffect(() =>{
         if (!cargando && datos.length > 0 && tags.length === 0) {
-            const limitedData = limitData(20)
+            const limitedData = limitArray(20)
             setTags(limitedData)
         }
-    }, [cargando, datos, tags, limitData])
+    }, [cargando, datos, tags, limitArray])
     return (
         <div className='tags'>
             {
