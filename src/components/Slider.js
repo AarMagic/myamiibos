@@ -5,22 +5,32 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { useAsync } from '../hooks/useAsync';
 import { Card } from './Card';
 import { AmiibosContext } from '../context/AmiibosContext';
 import { useArray } from '../hooks/useArray';
 
 export const Slider = () => {
   const amiibos = useContext(AmiibosContext)
-  const [amiibosState, setAmiibosState] = useState([]);
-  const {limitArray} = useArray(amiibos)
+  const [slicerData, setSlicerData] = useState([])
+  const { data, setData, limitData } = useArray({
+    data: [],
+    separation: 50
+  })
 
   useEffect(() => {
-    if (amiibosState.length <= 0) {
-      const limitedData = limitArray(10);
-      setAmiibosState(limitedData)
-    }      
-  }, [amiibosState, limitArray])
+    if (amiibos.length > 0 && Array.isArray(amiibos)) {
+      setData(amiibos)
+    }
+  }, [amiibos])
+
+  useEffect(() => {
+    if (data.length > 0) {
+        const dataReduced = limitData(10);
+        console.log(dataReduced)
+        setSlicerData(dataReduced);
+    }
+}, [data]);
+
 
   return (
     <Swiper
@@ -60,9 +70,9 @@ export const Slider = () => {
       modules={[Pagination, Navigation, Autoplay]}
     >
       {
-         !amiibosState
+        !slicerData
           ? "Cargando..."
-          : amiibosState.map((element, index) => (
+          : slicerData.map((element, index) => (
             <SwiperSlide key={index}>
               <Card element={element} />
             </SwiperSlide>

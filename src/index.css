@@ -11,7 +11,7 @@
   --gris-oscuro: #555;
   --amarillo: #FFD700;
   --verde-claro: #4CFF4C;
-  --verde-claro-2: #66FF66;
+  --verde-claro-2: #7bf77b;
   --tag1: #FF99C8;
   --tag2: #FCF6BD;
   --tag3: #D0F4DE;
@@ -99,4 +99,24 @@ p .resaltado {
 .inicio h2{
   margin-top: .8em;
   margin-bottom: .5em;
+}
+
+.buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button{
+  width: 5em;
+  height: 3em;
+  background-color: var(--verde-claro);
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: bold;
+}
+
+.buttons button:hover{
+  background-color: var(--verde-claro-2);
 }
