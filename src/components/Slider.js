@@ -26,7 +26,6 @@ export const Slider = () => {
   useEffect(() => {
     if (data.length > 0) {
         const dataReduced = limitData(10);
-        console.log(dataReduced)
         setSlicerData(dataReduced);
     }
 }, [data]);
