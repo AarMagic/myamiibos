@@ -6,61 +6,73 @@ import './Amiibos.css'
 import { useArray } from '../hooks/useArray';
 
 export const Amiibos = () => {
-  const allAmiibos = useContext(AmiibosContext);
+  const amiibos = useContext(AmiibosContext);
   const [amiibosState, setAmiibosState] = useState([]);
-  const { setData, setGroupNumberState, getGroup , groupNumberState} = useArray();
-  const { name } = useParams();
+  const { data, setNextGroup, setData, setpreviousGroup, getGroup, group } = useArray({
+    data: [],
+    separation: 50
+  })
 
   useEffect(() => {
-    setData(allAmiibos)
-  }, [])
-
-  useEffect(() => {
-    setData(amiibosState);
-    setGroupNumberState(50);
-  }, [amiibosState, setData, setGroupNumberState]);
-
-  useEffect(() => {
-    if (groupNumberState > 0) {
-      const firstAmiibos = getGroup();
-      console.log(firstAmiibos);
+    if (Array.isArray(amiibos) && amiibos.length > 0) {
+      setData(amiibos)
     }
-  }, [groupNumberState]);
+  }, [amiibos])
 
+  useEffect(() => {
+    if (Array.isArray(data) && data.length > 0) {
+      const group = getGroup()
+      setAmiibosState(group)
+    }
+  }, [data])
 
+  useEffect(() => {
+    if (group.from >= 0 && group.to > 0) {
+      const group = getGroup()
+      setAmiibosState(group)
+    }
+  }, [group])
+
+  const previousPage = () => {
+    setpreviousGroup()
+  }
 
   const nextPage = () => {
-    const nextGroup = getGroup()
-    if (nextGroup.length <= 0) {
-      console.error("error: empty array")
-    } else {
-      setAmiibosState(nextGroup)
-    }
-
-  }
-  const previousPage = () => {
-    const previousGroup = getGroup("previous")
-    if (previousGroup.length <= 0) {
-      console.error("error: empty array")
-    } else {
-      setAmiibosState(previousGroup)
-    }
-
+    setNextGroup()
   }
 
   return (
     <div className='amiibos content'>
       <div className='buttons'>
-        <button onClick={previousPage}>Previous</button>
-        <button onClick={nextPage}>Next</button>
+        {
+          amiibosState.length > 0 ?
+            <>
+              <button onClick={previousPage}>Previous</button>
+              <button onClick={nextPage}>Next</button>
+            </>
+            :
+            ""
+        }
       </div>
       <div className='amiibos-container content'>
         {
-          amiibosState.length <= 0
-            ? "Cargando..."
-            : amiibosState.map((element, index) => {
+          amiibosState.length > 0 ?
+            amiibosState.map((element, index) => {
               return <Card key={index} element={element} />
             })
+            :
+            "Cargando..."
+        }
+      </div>
+      <div className='buttons'>
+        {
+          amiibosState.length > 0 ?
+            <>
+              <button onClick={previousPage}>Previous</button>
+              <button onClick={nextPage}>Next</button>
+            </>
+            :
+            ""
         }
       </div>
     </div>

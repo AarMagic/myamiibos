@@ -20,8 +20,9 @@
 
 .card-image{
     margin-top: 1em;
+    width: 13em;
     height: 13em;
-    object-fit: cover;
+    object-fit: contain;
     mask-image: linear-gradient(
         var(--blanco),
         transparent 90%
