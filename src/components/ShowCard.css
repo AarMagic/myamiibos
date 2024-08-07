@@ -1,0 +1,31 @@
+.show-card-header{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    text-align: right;
+    border-bottom: 1px solid var(--negro);
+    padding-bottom: 1em;
+}
+
+.show-card-img{
+    object-fit: cover;
+    width: 15em;
+    height: 15em;
+    object-position: top;
+    border-radius: 50%;
+    border: 1px solid var(--negro);
+}
+
+.datos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.show-card-attribute span{
+    color: var(--negro);
+    font-weight: bold;
+}
+.show-card-attribute {
+    color: var(--gris-oscuro);
+}

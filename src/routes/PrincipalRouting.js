@@ -15,12 +15,12 @@ export const PrincipalRouting = () => {
         <Route path="/" element={<Navigate to="/inicio" />} />
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/amiibos/" element={<Amiibos />} />
-        <Route path="/amiibos/:name" element={<Amiibos />} />
-        <Route path="/search/:name" element={<ShowCard />} />
+        <Route path="/search/:name" element={<Amiibos />} />
         <Route path="/amiiboseries/" element={<Amiiboseries />} />
         <Route path="/amiiboseries/:amiiboseries" element={<Amiiboseries />} />
         <Route path="/gameseries/" element={<Gameseries />} />
         <Route path="/gameseries/:gameseries" element={<Gameseries />} />
+        <Route path='/amiibo/:id' element={<ShowCard />} />
       </Routes>
     </BrowserRouter>
   )

@@ -10,6 +10,7 @@
     text-shadow: -2px -2px 5px var(--gris-oscuro);
     margin: 2em 0;
     height: 20em;
+    cursor: pointer;
 }
 
 .card header {
