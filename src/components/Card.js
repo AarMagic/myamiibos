@@ -1,8 +1,12 @@
 import React from 'react';
 import './Card.css';
+import { redirect } from 'react-router-dom';
 export const Card = ({element}) => {
+    const showElement = () => {
+        
+    }
     return (
-        <article>
+        <article onClick={showElement}>
             <div className='card'>
                 <header>
                     <h3 className=' card-name'>{element.character}</h3>

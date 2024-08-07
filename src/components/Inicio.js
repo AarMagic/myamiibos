@@ -11,11 +11,11 @@ export const Inicio = () => {
                 </article>
                 <article>
                     <h2>Game Series</h2>
-                    <ShowTags url="https://www.amiiboapi.com/api/gameseries/" />
+                    <ShowTags url="https://www.amiiboapi.com/api/gameseries/" limit="10" />
                 </article>
                 <article>
                     <h2>Amiibo’s Series</h2>
-                    <ShowTags url="https://www.amiiboapi.com/api/amiiboseries" />
+                    <ShowTags url="https://www.amiiboapi.com/api/amiiboseries" limit="10" />
                 </article>
             </section>
         </div>

@@ -67,7 +67,7 @@ export const useArray = ({ data = [], separation }) => {
                     }
                 }
                 if (newFrom !== prevState.from || newTo !== prevState.to) {
-                    return {from: newFrom, to: newTo}
+                    return { from: newFrom, to: newTo }
                 }
                 return prevState
             })
@@ -96,6 +96,16 @@ export const useArray = ({ data = [], separation }) => {
         }
     }
 
+    const filterArray = (name) => {
+        if (name) {
+            let nameSearch = name.toLowerCase();
+            return dataState.filter(element => {
+                let nameElement = element.character.toLowerCase();
+                return nameElement.includes(nameSearch)
+            })
+        }
+    }
+
     return {
         data: dataState,
         setData: setDataState,
@@ -103,6 +113,7 @@ export const useArray = ({ data = [], separation }) => {
         setNextGroup,
         setpreviousGroup,
         getGroup,
-        group: groupState
+        group: groupState,
+        filterArray
     }
 }

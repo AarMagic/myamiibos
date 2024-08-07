@@ -1,7 +1,10 @@
 import React from 'react'
+import { ShowTags } from './ShowTags';
 
 export const Amiiboseries = () => {
   return (
-    <div>Amiiboseries</div>
+    <div className='content'>
+      <ShowTags url="https://www.amiiboapi.com/api/amiiboseries" />
+    </div>
   )
 }

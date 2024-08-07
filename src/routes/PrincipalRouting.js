@@ -5,6 +5,7 @@ import { Inicio } from '../components/Inicio'
 import { Amiibos } from '../components/Amiibos'
 import { Amiiboseries } from '../components/Amiiboseries'
 import { Gameseries } from '../components/Gameseries'
+import { ShowCard } from '../components/ShowCard'
 
 export const PrincipalRouting = () => {
   return (
@@ -15,7 +16,7 @@ export const PrincipalRouting = () => {
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/amiibos/" element={<Amiibos />} />
         <Route path="/amiibos/:name" element={<Amiibos />} />
-        <Route path="/search/:name" element={<Amiibos />} />
+        <Route path="/search/:name" element={<ShowCard />} />
         <Route path="/amiiboseries/" element={<Amiiboseries />} />
         <Route path="/amiiboseries/:amiiboseries" element={<Amiiboseries />} />
         <Route path="/gameseries/" element={<Gameseries />} />
