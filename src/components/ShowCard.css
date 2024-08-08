@@ -29,3 +29,33 @@
 .show-card-attribute {
     color: var(--gris-oscuro);
 }
+
+.games h2{
+    text-align: center;
+}
+.games table{
+    margin: 0 auto;
+}
+.games h2{
+    color: var(--negro);
+}
+
+.games .title{
+    color: var(--rojo-vivo);
+}
+
+table{
+    border-collapse: collapse;
+}
+
+table thead{
+    background-color: var(--tag2);
+}
+
+table th, td{
+    padding: 1em;
+}
+
+table td, th{
+    border: 1px solid black;
+}

@@ -4,16 +4,16 @@ export const useAsync = (data) => {
     const [datos, setDatos] = useState([]);
     const [cargando, setCargando] = useState(true)
 
-    const getData = async () => {
+    const getData = async (url = "") => {
         try {
             if (Array.isArray(data)) {
                 setDatos(data)
-            } else{
+            } else {
                 const response = await fetch(data);
                 if (!response.ok) {
                     throw new Error(response.status)
                 }
-    
+
                 const { amiibo } = await response.json();
                 const reduceArray = amiibo.filter((item, index, self) =>
                     index === self.findIndex((t) => (
@@ -29,16 +29,16 @@ export const useAsync = (data) => {
         }
     }
 
-    const setData = async(url) => {
+    const setData = async (url) => {
         try {
             if (Array.isArray(url)) {
                 setDatos(url)
-            } else{
+            } else {
                 const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error(response.status)
                 }
-    
+
                 const { amiibo } = await response.json();
                 let reduceArray = []
                 if (amiibo.length > 1) {
@@ -47,7 +47,7 @@ export const useAsync = (data) => {
                             t.name === item.name
                         ))
                     );
-                } else{
+                } else {
                     reduceArray = amiibo;
                 }
                 setDatos(reduceArray);
@@ -58,6 +58,7 @@ export const useAsync = (data) => {
             console.error("Error fetch: ", error)
         }
     }
+
 
     useEffect(() => {
         getData();
